@@ -1,0 +1,26 @@
+.animalList {
+    list-style: none;
+    padding: 0;
+    width: 200px;
+    margin-right: 30px;
+    li {
+        cursor: pointer;
+        padding: 5px;
+        background: white;
+    }
+
+    li:nth-child(odd) {
+        background-color: black;
+        color: white;
+    }
+
+    li.selected::after {
+        content: "";
+        width: 10px;
+        height: 10px;
+        background: black;
+        transform: rotate(45deg) translate(10px, -3px);
+        float: right;
+        z-index: -1;
+    }
+}

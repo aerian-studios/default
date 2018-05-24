@@ -1,35 +1,66 @@
-import { h, Component } from 'preact';
-import { Router } from 'preact-router';
-
-import Header from './header';
-import Home from '../routes/home';
-import Profile from '../routes/profile';
-// import Home from 'async!../routes/home';
-// import Profile from 'async!../routes/profile';
-
-if (module.hot) {
-	require('preact/debug');
-}
+import React, { Component } from "react";
+import { AnimalDetail } from "./AnimalDetail";
+import { AnimalList } from "./AnimalList";
+import { AnimalLightbox } from "./AnimalLightbox";
+import style from "./App.css";
 
 export default class App extends Component {
-	/** Gets fired when the route changes.
-	 *	@param {Object} event		"change" event from [preact-router](http://git.io/preact-router)
-	 *	@param {string} event.url	The newly routed URL
-	 */
-	handleRoute = e => {
-		this.currentUrl = e.url;
-	};
+    state = {
+        animals: [],
+        selectedAnimal: null,
+        lightboxAnimal: null
+    };
 
-	render() {
-		return (
-			<div id="app">
-				<Header />
-				<Router onChange={this.handleRoute}>
-					<Home path="/" />
-					<Profile path="/profile/" user="me" />
-					<Profile path="/profile/:user" />
-				</Router>
-			</div>
-		);
-	}
+    componentDidMount() {
+        this.loadAnimals();
+    }
+
+    loadAnimals = async () => {
+        const response = await fetch(
+            "//api.jsonbin.io/b/5afc5c68c2e3344ccd96b97c/1"
+        );
+        const animals = await response.json();
+
+        if (animals.length) {
+            this.setState({ animals, selectedAnimal: animals[0] });
+        }
+    };
+
+    chooseAnimal = animal => {
+        this.setState({ selectedAnimal: animal });
+    };
+
+    openLightbox = () =>
+        this.setState({
+            lightboxAnimal: this.state.selectedAnimal
+        });
+
+    closeLightbox = () => this.setState({ lightboxAnimal: null });
+
+    render() {
+        const { selectedAnimal, animals, lightboxAnimal } = this.state;
+
+        return (
+            <div className={style.animals}>
+                <div id="sidebar">
+                    <AnimalList
+                        animals={animals}
+                        selectedAnimal={selectedAnimal}
+                        onClick={this.chooseAnimal}
+                    />
+                </div>
+                <div id="detail">
+                    <AnimalDetail
+                        animal={selectedAnimal}
+                        onOpenImage={this.openLightbox}
+                    />
+                </div>
+                <AnimalLightbox
+                    visible={!!lightboxAnimal}
+                    animal={lightboxAnimal}
+                    onClick={this.closeLightbox}
+                />
+            </div>
+        );
+    }
 }

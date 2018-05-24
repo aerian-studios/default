@@ -1,0 +1,31 @@
+.lightbox {
+    @keyframes lightbox-open {
+        0% {
+            opacity: 0;
+            transform: scale3d(1.1, 1.1, 1);
+        }
+        100% {
+            opacity: 1;
+            transform: scale3d(1, 1, 1);
+        }
+    }
+
+    img {
+        margin: auto;
+        max-width: 90%;
+        max-height: 90%;
+        background-size: contain;
+        background-repeat: no-repeat;
+    }
+
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.9);
+    padding: 40px;
+    animation-duration: 0.3s;
+    animation-fill-mode: forwards;
+    animation-name: lightbox-open;
+}
