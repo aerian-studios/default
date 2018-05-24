@@ -1,5 +1,4 @@
 import React from "react";
-import style from "./AnimalDetail.css";
 
 export const AnimalDetail = ({ animal, onOpenImage }) => {
     const onClick = ev => {
@@ -12,11 +11,9 @@ export const AnimalDetail = ({ animal, onOpenImage }) => {
     return (
         animal && (
             <section>
-                <h1 className={style.commonName}>{animal.common_name}</h1>
-                <h2 className={style.latinName}>{animal.latin_name}</h2>
-                <h3 className={style.conservationStatus}>
-                    {animal.conservation_status}
-                </h3>
+                <h1>{animal.common_name}</h1>
+                <h2>{animal.latin_name}</h2>
+                <h3>{animal.conservation_status}</h3>
                 {animal.image_thumb && (
                     <a
                         href={animal.image_full}

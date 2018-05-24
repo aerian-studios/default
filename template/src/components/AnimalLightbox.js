@@ -1,10 +1,8 @@
 import React from "react";
 
-import styles from "./AnimalLightbox.scss";
-
 export const AnimalLightbox = ({ animal, onClick, visible }) =>
     visible && (
-        <div className={styles.lightbox} onClick={onClick}>
+        <div onClick={onClick}>
             <img
                 src={animal.image_full}
                 style={{

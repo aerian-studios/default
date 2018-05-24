@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import { AnimalDetail } from "./AnimalDetail";
 import { AnimalList } from "./AnimalList";
 import { AnimalLightbox } from "./AnimalLightbox";
-import style from "./App.css";
 
 export default class App extends Component {
     state = {
@@ -41,7 +40,7 @@ export default class App extends Component {
         const { selectedAnimal, animals, lightboxAnimal } = this.state;
 
         return (
-            <div className={style.animals}>
+            <div>
                 <div id="sidebar">
                     <AnimalList
                         animals={animals}
