@@ -13,17 +13,25 @@
         "storybook": "start-storybook -p 9001 -c .storybook"
     },
     "eslintConfig": {
-        "extends": "eslint-config-aerian"
+        "extends": [
+            "eslint-config-aerian"
+        ],
+        "settings": {
+            "import/core-modules": [
+                "react"
+            ]
+        }
     },
     "eslintIgnore": [
-        "build/*"
+        "build/*",
+        "src/tests/__mocks__/*"
     ],
     "devDependencies": {
         "@storybook/addon-actions": "^3.4.5",
         "@storybook/addon-storyshots": "^3.4.5",
         "@storybook/react": "^3.4.5",
         "eslint": "^4.9.0",
-        "eslint-config-aerian": "^1.0.1",
+        "eslint-config-aerian": "^1.0.3",
         "identity-obj-proxy": "^3.0.0",
         "if-env": "^1.0.0",
         "jest": "^21.2.1",
