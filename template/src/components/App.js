@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import { AnimalDetail } from "./AnimalDetail";
-import { AnimalList } from "./AnimalList";
-import { AnimalLightbox } from "./AnimalLightbox";
+import { AnimalDetail } from "./AnimalDetail/AnimalDetail";
+import { AnimalList } from "./AnimalList/AnimalList";
+import { AnimalLightbox } from "./AnimalLightbox/AnimalLightbox";
 
 export default class App extends Component {
     state = {
