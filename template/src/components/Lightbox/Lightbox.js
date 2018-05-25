@@ -1,12 +1,12 @@
 import React from "react";
 
-export const AnimalLightbox = ({ animal, onClick, visible }) =>
+export const Lightbox = ({ image, lowRes, onClick, visible }) =>
     visible && (
         <div onClick={onClick}>
             <img
-                src={animal.image_full}
+                src={image}
                 style={{
-                    backgroundImage: `url(${animal.image_thumb})`
+                    backgroundImage: `url(${lowRes})`
                 }}
             />
         </div>

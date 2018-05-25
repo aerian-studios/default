@@ -1,17 +1,15 @@
 import React from "react";
+import { ListItem } from "../ListItem/ListItem";
 
 export const AnimalList = ({ animals, selectedAnimal, onClick }) => (
     <ul>
         {animals.map(animal => (
-            <li
+            <ListItem
                 key={animal.uuid}
-                className={
-                    animal.uuid === selectedAnimal.uuid ? "selected" : ""
-                }
+                selected={animal.uuid === selectedAnimal.uuid}
                 onClick={() => onClick(animal)}
-            >
-                {animal.common_name}
-            </li>
+                label={animal.common_name}
+            />
         ))}
     </ul>
 );

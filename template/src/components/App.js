@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { AnimalDetail } from "./AnimalDetail/AnimalDetail";
 import { AnimalList } from "./AnimalList/AnimalList";
-import { AnimalLightbox } from "./AnimalLightbox/AnimalLightbox";
+import { Lightbox } from "./Lightbox/Lightbox";
 
 export default class App extends Component {
     state = {
@@ -54,9 +54,10 @@ export default class App extends Component {
                         onOpenImage={this.openLightbox}
                     />
                 </div>
-                <AnimalLightbox
+                <Lightbox
                     visible={!!lightboxAnimal}
-                    animal={lightboxAnimal}
+                    image={lightboxAnimal && lightboxAnimal.image_full}
+                    lowRes={lightboxAnimal && lightboxAnimal.image_thumb}
                     onClick={this.closeLightbox}
                 />
             </div>

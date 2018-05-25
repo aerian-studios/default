@@ -9,7 +9,7 @@
         "serve": "preact build && preact serve",
         "dev": "preact watch",
         "lint": "eslint src",
-        "test": "jest ./tests",
+        "test": "jest",
         "storybook": "start-storybook -p 9001 -c .storybook"
     },
     "eslintConfig": {
@@ -20,6 +20,7 @@
     ],
     "devDependencies": {
         "@storybook/addon-actions": "^3.4.5",
+        "@storybook/addon-storyshots": "^3.4.5",
         "@storybook/react": "^3.4.5",
         "eslint": "^4.9.0",
         "eslint-config-aerian": "^1.0.1",
@@ -45,7 +46,8 @@
         "testURL": "http://localhost:8080",
         "moduleFileExtensions": [
             "js",
-            "jsx"
+            "jsx",
+            "json"
         ],
         "moduleDirectories": [
             "node_modules"
